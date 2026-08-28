@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { PDFDocument, rgb } from "pdf-lib";
 
 export function CompressPdfTool() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [file, setFile] = useState<File | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [result, setResult] = useState<{
@@ -79,14 +79,14 @@ export function CompressPdfTool() {
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
           <Minimize2 className="w-4 h-4 text-red-400" />
-          <span>Upload PDF to Reduce File Size</span>
+          <span>{lang === "zh" ? "上传 PDF 并执行本地流压缩" : "Upload PDF to Reduce File Size"}</span>
         </span>
         <button
           onClick={loadSampleDoc}
           className="text-xs px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 font-semibold transition-all flex items-center gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>Try Sample PDF</span>
+          <span>{lang === "zh" ? "载入测试示例文档" : "Try Sample PDF"}</span>
         </button>
       </div>
 
@@ -94,8 +94,8 @@ export function CompressPdfTool() {
         <DropZone
           onFilesSelected={handleFileSelected}
           multiple={false}
-          label="Drag & drop your PDF file to compress, or"
-          sublabel="100% in-browser stream optimization. Perfect for email attachments."
+          label={lang === "zh" ? "将需要压缩的 PDF 文件拖拽至此处，或" : "Drag & drop your PDF file to compress, or"}
+          sublabel={lang === "zh" ? "100% 浏览器本地流对象重构，快速瘦身适合邮件附件与网页上传。" : "100% in-browser stream optimization. Perfect for email attachments."}
         />
       ) : (
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 shadow-2xl">
@@ -107,8 +107,9 @@ export function CompressPdfTool() {
               <div>
                 <h4 className="text-sm font-bold text-white">{file.name}</h4>
                 <p className="text-xs text-slate-400 font-mono">
-                  Original Size: {(file.size / 1024 / 1024).toFixed(2)} MB (
-                  {(file.size / 1024).toFixed(0)} KB)
+                  {lang === "zh"
+                    ? `原始体积: ${(file.size / 1024 / 1024).toFixed(2)} MB (${(file.size / 1024).toFixed(0)} KB)`
+                    : `Original Size: ${(file.size / 1024 / 1024).toFixed(2)} MB (${(file.size / 1024).toFixed(0)} KB)`}
                 </p>
               </div>
             </div>
@@ -116,7 +117,7 @@ export function CompressPdfTool() {
               onClick={clear}
               className="text-xs text-slate-400 hover:text-rose-400 transition-colors"
             >
-              Change File
+              {lang === "zh" ? "更换文件" : "Change File"}
             </button>
           </div>
 
@@ -124,10 +125,12 @@ export function CompressPdfTool() {
           <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-2">
             <div className="flex items-center gap-2 text-xs font-bold text-emerald-400">
               <TrendingDown className="w-4 h-4" />
-              <span>Smart In-Browser Lossless Compression</span>
+              <span>{lang === "zh" ? "智能本地无损流压缩" : "Smart In-Browser Lossless Compression"}</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              DocuPure recompresses object streams, removes unreferenced fonts, and compacts cross-reference tables while preserving 100% vector text sharpness.
+              {lang === "zh"
+                ? "DocuPure 在本地重新编码对象流、清除冗余未引用字体与元数据，保持 100% 矢量文字清晰锐利。"
+                : "DocuPure recompresses object streams, removes unreferenced fonts, and compacts cross-reference tables while preserving 100% vector text sharpness."}
             </p>
           </div>
 
@@ -149,7 +152,7 @@ export function CompressPdfTool() {
             ) : (
               <>
                 <Download className="w-5 h-5" />
-                <span>Compress & Download Lightweight PDF</span>
+                <span>{lang === "zh" ? "立即压缩并下载轻量化 PDF" : "Compress & Download Lightweight PDF"}</span>
               </>
             )}
           </button>
@@ -168,22 +171,22 @@ export function CompressPdfTool() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-bold text-sm text-emerald-400">
               <CheckCircle className="w-5 h-5" />
-              <span>Compression Complete & Downloaded!</span>
+              <span>{lang === "zh" ? "压缩完毕并已自动下载！" : "Compression Complete & Downloaded!"}</span>
             </div>
             <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs">
-              Saved {result.reductionPercentage}%
+              {lang === "zh" ? `瘦身 ${result.reductionPercentage}%` : `Saved ${result.reductionPercentage}%`}
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3 text-xs bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800 font-mono">
             <div>
-              <span className="text-slate-500 block">Original Size:</span>
+              <span className="text-slate-500 block">{lang === "zh" ? "压缩前体积：" : "Original Size:"}</span>
               <span className="text-slate-300 font-bold">
                 {(result.originalSize / 1024).toFixed(1)} KB
               </span>
             </div>
             <div>
-              <span className="text-slate-500 block">Compressed Size:</span>
+              <span className="text-slate-500 block">{lang === "zh" ? "压缩后体积：" : "Compressed Size:"}</span>
               <span className="text-emerald-400 font-bold">
                 {(result.compressedSize / 1024).toFixed(1)} KB
               </span>

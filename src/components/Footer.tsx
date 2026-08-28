@@ -28,41 +28,44 @@ export function Footer() {
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
               <ShieldCheck className="w-4 h-4" />
-              <span>100% In-Browser Memory (0 Server Uploads)</span>
+              <span>{t("privacyBadge")}</span>
             </div>
           </div>
 
           {/* Col 2: Core PDF Tools */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">PDF Tools</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("footerPdfTools")}</h4>
             <ul className="space-y-2">
-              {PDF_TOOLS.map((tool) => (
-                <li key={tool.id}>
-                  <Link href={tool.path} className="hover:text-red-400 transition-colors">
-                    {tool.name}
-                  </Link>
-                </li>
-              ))}
+              {PDF_TOOLS.map((tool) => {
+                const loc = tool.locales[lang] || tool.locales.en;
+                return (
+                  <li key={tool.id}>
+                    <Link href={tool.path} className="hover:text-red-400 transition-colors">
+                      {loc.name}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           {/* Col 3: Competitor Comparisons */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Competitor Comparisons</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">{t("footerCompetitors")}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/ilovepdf-alternative" className="hover:text-red-400 transition-colors">
-                  iLovePDF Alternative
+                  {t("vsIlovepdf")}
                 </Link>
               </li>
               <li>
                 <Link href="/smallpdf-alternative" className="hover:text-red-400 transition-colors">
-                  Smallpdf Alternative
+                  {t("vsSmallpdf")}
                 </Link>
               </li>
               <li>
                 <Link href="/adobe-acrobat-alternative" className="hover:text-red-400 transition-colors">
-                  Adobe Acrobat Alternative
+                  {t("vsAdobe")}
                 </Link>
               </li>
             </ul>
@@ -72,7 +75,7 @@ export function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-red-400" />
-              <span>PureToolHub Matrix</span>
+              <span>{t("footerMatrix")}</span>
             </h4>
             <ul className="space-y-2">
               <li>
@@ -123,7 +126,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-400 text-xs">
-          <p>© 2026 DocuPure. Built for privacy, speed, and zero cloud dependency.</p>
+          <p>{t("footerCopyright")}</p>
           <div className="flex items-center gap-4">
             <a
               href="mailto:support@puretoolhub.com"

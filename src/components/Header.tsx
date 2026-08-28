@@ -43,7 +43,7 @@ export function Header() {
                 : "text-slate-300 hover:text-white hover:bg-slate-900"
             }`}
           >
-            Merge PDF
+            {t("navMerge")}
           </Link>
           <Link
             href="/split-pdf"
@@ -53,7 +53,7 @@ export function Header() {
                 : "text-slate-300 hover:text-white hover:bg-slate-900"
             }`}
           >
-            Split PDF
+            {t("navSplit")}
           </Link>
           <Link
             href="/jpg-to-pdf"
@@ -63,7 +63,7 @@ export function Header() {
                 : "text-slate-300 hover:text-white hover:bg-slate-900"
             }`}
           >
-            JPG to PDF
+            {t("navJpgToPdf")}
           </Link>
           <Link
             href="/compress-pdf"
@@ -73,7 +73,7 @@ export function Header() {
                 : "text-slate-300 hover:text-white hover:bg-slate-900"
             }`}
           >
-            Compress
+            {t("navCompress")}
           </Link>
           <Link
             href="/protect-pdf"
@@ -83,7 +83,7 @@ export function Header() {
                 : "text-slate-300 hover:text-white hover:bg-slate-900"
             }`}
           >
-            Protect
+            {t("navProtect")}
           </Link>
           <Link
             href="/ilovepdf-alternative"

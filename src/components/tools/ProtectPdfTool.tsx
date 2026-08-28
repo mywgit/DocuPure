@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { PDFDocument, rgb } from "pdf-lib";
 
 export function ProtectPdfTool() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [file, setFile] = useState<File | null>(null);
   const [watermarkText, setWatermarkText] = useState("CONFIDENTIAL");
   const [opacity, setOpacity] = useState(0.25);
@@ -78,14 +78,14 @@ export function ProtectPdfTool() {
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
           <Shield className="w-4 h-4 text-red-400" />
-          <span>Upload PDF & Add Diagonal Security Watermark</span>
+          <span>{lang === "zh" ? "上传 PDF 并添加 45 度半透明文字水印" : "Upload PDF & Add Diagonal Security Watermark"}</span>
         </span>
         <button
           onClick={loadSampleDoc}
           className="text-xs px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 font-semibold transition-all flex items-center gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>Try Sample Document</span>
+          <span>{lang === "zh" ? "载入测试示例文档" : "Try Sample Document"}</span>
         </button>
       </div>
 
@@ -93,8 +93,8 @@ export function ProtectPdfTool() {
         <DropZone
           onFilesSelected={handleFileSelected}
           multiple={false}
-          label="Drag & drop your PDF file to watermark, or"
-          sublabel="Add diagonal copyright protection text across all pages in 1 click."
+          label={lang === "zh" ? "将需要加水印的 PDF 文件拖拽至此处，或" : "Drag & drop your PDF file to watermark, or"}
+          sublabel={lang === "zh" ? "一键在每一页以 45 度角覆盖半透明防伪文字水印。" : "Add diagonal copyright protection text across all pages in 1 click."}
         />
       ) : (
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 shadow-2xl">
@@ -114,23 +114,26 @@ export function ProtectPdfTool() {
               onClick={clear}
               className="text-xs text-slate-400 hover:text-rose-400 transition-colors"
             >
-              Change File
+              {lang === "zh" ? "更换文件" : "Change File"}
             </button>
           </div>
 
           {/* Watermark Configuration Form */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">Watermark Text:</label>
+              <label className="text-xs font-bold text-slate-300">{lang === "zh" ? "水印文字内容：" : "Watermark Text:"}</label>
               <input
                 type="text"
                 value={watermarkText}
                 onChange={(e) => setWatermarkText(e.target.value)}
-                placeholder="e.g. CONFIDENTIAL, DRAFT, SAMPLE"
+                placeholder={lang === "zh" ? "例如：机密文件、内部资料、样品" : "e.g. CONFIDENTIAL, DRAFT, SAMPLE"}
                 className="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm font-bold text-white focus:outline-none focus:border-red-500"
               />
               <div className="flex gap-2 pt-1">
-                {["CONFIDENTIAL", "DRAFT", "COPY", "DO NOT SHARE"].map((preset) => (
+                {(lang === "zh"
+                  ? ["机密文件", "内部资料", "仅供审阅", "严禁外传"]
+                  : ["CONFIDENTIAL", "DRAFT", "COPY", "DO NOT SHARE"]
+                ).map((preset) => (
                   <button
                     key={preset}
                     type="button"
@@ -145,7 +148,7 @@ export function ProtectPdfTool() {
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-bold text-slate-300">
-                <label>Opacity (Transparency):</label>
+                <label>{lang === "zh" ? "水印透明度 (不遮挡正文)：" : "Opacity (Transparency):"}</label>
                 <span className="font-mono text-red-400">{Math.round(opacity * 100)}%</span>
               </div>
               <input
@@ -158,7 +161,7 @@ export function ProtectPdfTool() {
                 className="w-full accent-red-500 mt-2"
               />
               <p className="text-[11px] text-slate-500">
-                Recommended 20% to 30% for high readability without blocking main text.
+                {lang === "zh" ? "推荐 20% 至 30% 透明度，既清晰防伪又完全不影响正文阅读。" : "Recommended 20% to 30% for high readability without blocking main text."}
               </p>
             </div>
           </div>
@@ -181,7 +184,7 @@ export function ProtectPdfTool() {
             ) : (
               <>
                 <Download className="w-5 h-5" />
-                <span>Apply Watermark & Download PDF</span>
+                <span>{lang === "zh" ? "生成防伪水印并下载 PDF" : "Apply Watermark & Download PDF"}</span>
               </>
             )}
           </button>
@@ -199,10 +202,10 @@ export function ProtectPdfTool() {
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span>Success! Watermarked PDF has been created and saved.</span>
+            <span>{lang === "zh" ? "添加水印成功！保护后的 PDF 文档已下载。" : "Success! Watermarked PDF has been created and saved."}</span>
           </div>
           <button onClick={clear} className="underline text-emerald-300 font-bold">
-            Protect Another
+            {lang === "zh" ? "处理其他文件" : "Protect Another"}
           </button>
         </div>
       )}

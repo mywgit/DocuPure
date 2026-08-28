@@ -14,7 +14,7 @@ interface UploadedFile {
 }
 
 export function MergePdfTool() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [files, setFiles] = useState<UploadedFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
@@ -117,7 +117,7 @@ export function MergePdfTool() {
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
           <Files className="w-4 h-4 text-red-400" />
-          <span>Upload & Arrange PDF Sequence</span>
+          <span>{lang === "zh" ? "上传并自由拖拽调整 PDF 顺序" : "Upload & Arrange PDF Sequence"}</span>
         </span>
         <button
           onClick={loadSampleFiles}
@@ -131,8 +131,8 @@ export function MergePdfTool() {
       {/* Drop zone */}
       <DropZone
         onFilesSelected={handleFilesSelected}
-        label="Drag & drop PDF files to merge, or"
-        sublabel="Select 2 or more PDF files. You can reorder them after uploading."
+        label={lang === "zh" ? "将需要合并的多份 PDF 拖拽至此处，或" : "Drag & drop PDF files to merge, or"}
+        sublabel={lang === "zh" ? "选择 2 份或更多 PDF 文档，上传后可自由调整前后顺序。" : "Select 2 or more PDF files. You can reorder them after uploading."}
       />
 
       {errorMsg && (
@@ -147,7 +147,9 @@ export function MergePdfTool() {
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-800 pb-2">
             <span className="text-xs font-bold text-slate-300">
-              Total {files.length} document{files.length > 1 ? "s" : ""} selected
+              {lang === "zh"
+                ? `已添加 ${files.length} 份 PDF 文档`
+                : `Total ${files.length} document${files.length > 1 ? "s" : ""} selected`}
             </span>
             <button
               onClick={clearAll}
@@ -226,7 +228,9 @@ export function MergePdfTool() {
                 <>
                   <Download className="w-5 h-5" />
                   <span>
-                    Merge {files.length} PDFs & Download (100% Free)
+                    {lang === "zh"
+                      ? `立即合并 ${files.length} 份文档并下载 (100% 免费)`
+                      : `Merge ${files.length} PDFs & Download (100% Free)`}
                   </span>
                 </>
               )}
@@ -239,10 +243,10 @@ export function MergePdfTool() {
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span>Success! Combined PDF has been downloaded to your computer.</span>
+            <span>{lang === "zh" ? "合并成功！新 PDF 文档已自动下载至您的设备。" : "Success! Combined PDF has been downloaded to your computer."}</span>
           </div>
           <button onClick={clearAll} className="underline text-emerald-300 font-bold">
-            Merge More
+            {lang === "zh" ? "继续合并其他文件" : "Merge More"}
           </button>
         </div>
       )}

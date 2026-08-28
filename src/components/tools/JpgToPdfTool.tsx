@@ -15,7 +15,7 @@ interface ImageItem {
 }
 
 export function JpgToPdfTool() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [images, setImages] = useState<ImageItem[]>([]);
   const [pageSize, setPageSize] = useState<"a4" | "fit">("a4");
   const [orientation, setOrientation] = useState<"portrait" | "landscape">("portrait");
@@ -112,22 +112,22 @@ export function JpgToPdfTool() {
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
           <ImageIcon className="w-4 h-4 text-red-400" />
-          <span>Upload Images & Configure PDF Page Setup</span>
+          <span>{lang === "zh" ? "上传图片并配置 PDF 纸张排版" : "Upload Images & Configure PDF Page Setup"}</span>
         </span>
         <button
           onClick={loadSampleImages}
           className="text-xs px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 font-semibold transition-all flex items-center gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>Try Sample Images</span>
+          <span>{lang === "zh" ? "载入测试图片示例" : "Try Sample Images"}</span>
         </button>
       </div>
 
       <DropZone
         onFilesSelected={handleImagesSelected}
         accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
-        label="Drag & drop JPG, PNG, or WebP images, or"
-        sublabel="Select multiple photos to combine into a single PDF document."
+        label={lang === "zh" ? "将 JPG、PNG 或 WebP 图片拖拽至此处，或" : "Drag & drop JPG, PNG, or WebP images, or"}
+        sublabel={lang === "zh" ? "选择多张照片批量合成排版为单份 PDF 文档。" : "Select multiple photos to combine into a single PDF document."}
       />
 
       {errorMsg && (
@@ -142,39 +142,39 @@ export function JpgToPdfTool() {
           {/* Options Header */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-b border-slate-800 pb-5">
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">Page Size:</label>
+              <label className="text-xs font-bold text-slate-300">{lang === "zh" ? "纸张尺寸：" : "Page Size:"}</label>
               <select
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as any)}
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-red-500"
               >
-                <option value="a4">Standard A4 (Fit to Page)</option>
-                <option value="fit">Original Image Size (Auto Fit)</option>
+                <option value="a4">{lang === "zh" ? "标准 A4 页面 (居中自适应)" : "Standard A4 (Fit to Page)"}</option>
+                <option value="fit">{lang === "zh" ? "原图尺寸 (1:1 像素嵌入)" : "Original Image Size (Auto Fit)"}</option>
               </select>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">Orientation:</label>
+              <label className="text-xs font-bold text-slate-300">{lang === "zh" ? "页面方向：" : "Orientation:"}</label>
               <select
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as any)}
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-red-500"
               >
-                <option value="portrait">Portrait (Vertical)</option>
-                <option value="landscape">Landscape (Horizontal)</option>
+                <option value="portrait">{lang === "zh" ? "纵向 (Portrait)" : "Portrait (Vertical)"}</option>
+                <option value="landscape">{lang === "zh" ? "横向 (Landscape)" : "Landscape (Horizontal)"}</option>
               </select>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-300">Margin:</label>
+              <label className="text-xs font-bold text-slate-300">{lang === "zh" ? "页边距：" : "Margin:"}</label>
               <select
                 value={margin}
                 onChange={(e) => setMargin(Number(e.target.value))}
                 className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:border-red-500"
               >
-                <option value={0}>No Margin (Border to Border)</option>
-                <option value={20}>Small Margin (20pt)</option>
-                <option value={40}>Wide Margin (40pt)</option>
+                <option value={0}>{lang === "zh" ? "无边距 (铺满整个页面)" : "No Margin (Border to Border)"}</option>
+                <option value={20}>{lang === "zh" ? "标准边距 (20pt 打印留白)" : "Small Margin (20pt)"}</option>
+                <option value={40}>{lang === "zh" ? "宽边距 (40pt 装订留白)" : "Wide Margin (40pt)"}</option>
               </select>
             </div>
           </div>
@@ -183,7 +183,9 @@ export function JpgToPdfTool() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-slate-300">
-                Selected {images.length} photo{images.length > 1 ? "s" : ""}
+                {lang === "zh"
+                  ? `已选择 ${images.length} 张图片`
+                  : `Selected ${images.length} photo${images.length > 1 ? "s" : ""}`}
               </span>
               <button
                 onClick={clearAll}
@@ -237,7 +239,9 @@ export function JpgToPdfTool() {
               <>
                 <Download className="w-5 h-5" />
                 <span>
-                  Convert {images.length} Images to PDF Document
+                  {lang === "zh"
+                    ? `将 ${images.length} 张图片合成并生成 PDF 文档`
+                    : `Convert ${images.length} Images to PDF Document`}
                 </span>
               </>
             )}
@@ -249,10 +253,10 @@ export function JpgToPdfTool() {
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span>Success! Combined PDF document has been created and downloaded.</span>
+            <span>{lang === "zh" ? "转换成功！高清 PDF 文档已下载至您的设备。" : "Success! Combined PDF document has been created and downloaded."}</span>
           </div>
           <button onClick={clearAll} className="underline text-emerald-300 font-bold">
-            Convert More
+            {lang === "zh" ? "转换更多图片" : "Convert More"}
           </button>
         </div>
       )}

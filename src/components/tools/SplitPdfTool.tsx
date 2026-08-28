@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { PDFDocument, rgb } from "pdf-lib";
 
 export function SplitPdfTool() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [file, setFile] = useState<File | null>(null);
   const [pageCount, setPageCount] = useState<number | null>(null);
   const [mode, setMode] = useState<"range" | "all">("range");
@@ -96,14 +96,14 @@ export function SplitPdfTool() {
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
           <Scissors className="w-4 h-4 text-red-400" />
-          <span>Upload PDF & Define Extract Range</span>
+          <span>{lang === "zh" ? "上传 PDF 并设定提取页码范围" : "Upload PDF & Define Extract Range"}</span>
         </span>
         <button
           onClick={loadSampleDoc}
           className="text-xs px-3 py-1.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 font-semibold transition-all flex items-center gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-          <span>Try 5-Page Sample</span>
+          <span>{lang === "zh" ? "载入 5 页测试示例文档" : "Try 5-Page Sample"}</span>
         </button>
       </div>
 
@@ -111,8 +111,8 @@ export function SplitPdfTool() {
         <DropZone
           onFilesSelected={handleFileSelected}
           multiple={false}
-          label="Drag & drop your PDF file to split, or"
-          sublabel="Select a document. We will analyze page numbers locally."
+          label={lang === "zh" ? "将需要拆分的 PDF 文件拖拽至此处，或" : "Drag & drop your PDF file to split, or"}
+          sublabel={lang === "zh" ? "选择单份文档，系统在本地沙盒秒级解析所有页面。" : "Select a document. We will analyze page numbers locally."}
         />
       ) : (
         <div className="p-6 rounded-3xl bg-slate-950 border border-slate-800 space-y-6 shadow-2xl">
@@ -125,7 +125,9 @@ export function SplitPdfTool() {
               <div>
                 <h4 className="text-sm font-bold text-white">{file.name}</h4>
                 <p className="text-xs text-slate-400">
-                  Total {pageCount} Pages • {(file.size / 1024 / 1024).toFixed(2)} MB
+                  {lang === "zh"
+                    ? `共计 ${pageCount} 页 • ${(file.size / 1024 / 1024).toFixed(2)} MB`
+                    : `Total ${pageCount} Pages • ${(file.size / 1024 / 1024).toFixed(2)} MB`}
                 </p>
               </div>
             </div>
@@ -133,7 +135,7 @@ export function SplitPdfTool() {
               onClick={clear}
               className="text-xs text-slate-400 hover:text-rose-400 transition-colors"
             >
-              Change File
+              {lang === "zh" ? "更换文件" : "Change File"}
             </button>
           </div>
 
@@ -155,9 +157,13 @@ export function SplitPdfTool() {
                 className="mt-1"
               />
               <div className="space-y-1">
-                <p className="text-xs font-bold text-white">Extract Custom Page Range</p>
+                <p className="text-xs font-bold text-white">
+                  {lang === "zh" ? "提取自定义页码范围" : "Extract Custom Page Range"}
+                </p>
                 <p className="text-[11px] text-slate-400">
-                  Combine selected pages (e.g. 1-3, 5) into a single extracted PDF.
+                  {lang === "zh"
+                    ? "将选定页码（如 1-3, 5）提取并合成为单份新 PDF。"
+                    : "Combine selected pages (e.g. 1-3, 5) into a single extracted PDF."}
                 </p>
               </div>
             </label>
@@ -178,9 +184,13 @@ export function SplitPdfTool() {
                 className="mt-1"
               />
               <div className="space-y-1">
-                <p className="text-xs font-bold text-white">Split Every Page to Separate File</p>
+                <p className="text-xs font-bold text-white">
+                  {lang === "zh" ? "拆分为所有独立单页" : "Split Every Page to Separate File"}
+                </p>
                 <p className="text-[11px] text-slate-400">
-                  Export all {pageCount} pages as individual PDFs packaged in a ZIP.
+                  {lang === "zh"
+                    ? `将全部 ${pageCount} 页分别导出为独立 PDF，并一键打包为 ZIP 下载。`
+                    : `Export all ${pageCount} pages as individual PDFs packaged in a ZIP.`}
                 </p>
               </div>
             </label>
@@ -190,9 +200,9 @@ export function SplitPdfTool() {
           {mode === "range" && (
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-300 flex items-center justify-between">
-                <span>Page Ranges to Extract:</span>
+                <span>{lang === "zh" ? "需要提取的页码（支持逗号与连字符）：" : "Page Ranges to Extract:"}</span>
                 <span className="text-[11px] text-slate-500 font-normal">
-                  Total range: 1 to {pageCount}
+                  {lang === "zh" ? `有效范围: 1 到 ${pageCount}` : `Total range: 1 to ${pageCount}`}
                 </span>
               </label>
               <input
@@ -224,7 +234,13 @@ export function SplitPdfTool() {
               <>
                 <Download className="w-5 h-5" />
                 <span>
-                  {mode === "all" ? `Split ${pageCount} Pages into ZIP` : `Extract Pages (${pageRange})`}
+                  {mode === "all"
+                    ? lang === "zh"
+                      ? `一键拆分 ${pageCount} 页并打包 ZIP`
+                      : `Split ${pageCount} Pages into ZIP`
+                    : lang === "zh"
+                    ? `提取指定页码 (${pageRange}) 并下载`
+                    : `Extract Pages (${pageRange})`}
                 </span>
               </>
             )}
@@ -243,10 +259,10 @@ export function SplitPdfTool() {
         <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CheckCircle className="w-4 h-4 text-emerald-400" />
-            <span>Success! Extracted PDF has been saved to your computer.</span>
+            <span>{lang === "zh" ? "拆分成功！文件已保存至您的本地电脑。" : "Success! Extracted PDF has been saved to your computer."}</span>
           </div>
           <button onClick={clear} className="underline text-emerald-300 font-bold">
-            Split Another
+            {lang === "zh" ? "拆分其他文件" : "Split Another"}
           </button>
         </div>
       )}

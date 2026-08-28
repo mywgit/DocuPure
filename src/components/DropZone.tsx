@@ -21,7 +21,7 @@ export function DropZone({
   label,
   sublabel,
 }: DropZoneProps) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -86,7 +86,10 @@ export function DropZone({
           </span>
         </p>
         <p className="text-xs text-slate-400">
-          {sublabel || "Files stay 100% in your browser memory. 0 bytes uploaded to remote servers."}
+          {sublabel ||
+            (lang === "zh"
+              ? "文件 100% 在您的浏览器沙盒内存中运算，0 字节上传远程服务器。"
+              : "Files stay 100% in your browser memory. 0 bytes uploaded to remote servers.")}
         </p>
       </div>
 

@@ -67,7 +67,7 @@ export default function HomePage() {
             href="/merge-pdf"
             className="px-7 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white rounded-2xl text-sm font-bold shadow-2xl shadow-red-950/60 flex items-center gap-2 transition-all hover:scale-105"
           >
-            <span>Start Merging PDF</span>
+            <span>{t("startMerging")}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
@@ -88,7 +88,7 @@ export default function HomePage() {
               {t("popularTools")}
             </h2>
           </div>
-          <span className="text-xs text-slate-400 font-mono">6 Tools Available • 100% Free</span>
+          <span className="text-xs text-slate-400 font-mono">{t("toolsAvailable")}</span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-3 border-t border-slate-800/60 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-red-400 transition-colors">
-                  <span>Open Tool</span>
+                  <span>{t("openTool")}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
@@ -133,10 +133,10 @@ export default function HomePage() {
       <section className="p-8 sm:p-12 rounded-3xl bg-slate-900/30 border border-slate-800/80 space-y-8 shadow-2xl">
         <div className="text-center space-y-2 max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            Why Client-Side In-Browser Processing Wins
+            {t("pillarsTitle")}
           </h2>
           <p className="text-xs sm:text-sm text-slate-400">
-            How DocuPure eliminates server upload risks, subscription lockouts, and slow network queues.
+            {t("pillarsSubtitle")}
           </p>
         </div>
 
@@ -145,9 +145,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
               <ServerOff className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-white">0 Bytes Uploaded</h3>
+            <h3 className="text-base font-bold text-white">{t("pillar1Title")}</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Your sensitive financial contracts, invoices, and IDs never leave your browser sandbox memory. Full offline capability once loaded.
+              {t("pillar1Desc")}
             </p>
           </div>
 
@@ -155,9 +155,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
               <Cpu className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-white">Local Hardware Acceleration</h3>
+            <h3 className="text-base font-bold text-white">{t("pillar2Title")}</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Powered by modern WebAssembly and native Web Crypto Subtle API. Large documents merge and split in sub-seconds without waiting for cloud queues.
+              {t("pillar2Desc")}
             </p>
           </div>
 
@@ -165,9 +165,9 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center">
               <Zap className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-bold text-white">Zero Artificial Limits</h3>
+            <h3 className="text-base font-bold text-white">{t("pillar3Title")}</h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Unlike traditional sites that block you after 2 conversions demanding $12/month, DocuPure offers unlimited merges, splits, and conversions for free.
+              {t("pillar3Desc")}
             </p>
           </div>
         </div>
@@ -178,13 +178,13 @@ export default function HomePage() {
         <div className="space-y-2 text-center lg:text-left">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 uppercase tracking-wider">
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>PureToolHub Cross-Product Matrix</span>
+            <span>{t("matrixBadge")}</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-bold text-white">
-            Discover the Complete PureToolHub Workspace
+            {t("matrixTitle")}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
-            From Amazon FBA fee solvers to Notion-style link-in-bio studios and developer utilities.
+            {t("matrixDesc")}
           </p>
         </div>
 

@@ -170,13 +170,17 @@ export function PdfToolLayout({ tool, children }: PdfToolLayoutProps) {
         <div className="space-y-2 text-center sm:text-left">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 uppercase tracking-wider">
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span>PureToolHub Productivity Matrix</span>
+            <span>{t("matrixBadge")}</span>
           </div>
           <h3 className="text-lg sm:text-xl font-bold text-white">
-            Need Amazon FBA Solvers or Creator Bio Stores?
+            {lang === "zh"
+              ? "需要亚马逊 FBA 利润测算或创作者微官网？"
+              : "Need Amazon FBA Solvers or Creator Bio Stores?"}
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl">
-            Explore CalcHub for exact Amazon FBA fee simulations and SnapBio to launch your aesthetic Link-in-Bio hub in 30 seconds.
+            {lang === "zh"
+              ? "在 CalcHub 精准模拟 2026 最新 FBA 阶梯履约费与 PPC 广告保本售价，在 SnapBio 30 秒搭建 Notion 风格个人主页。"
+              : "Explore CalcHub for exact Amazon FBA fee simulations and SnapBio to launch your aesthetic Link-in-Bio hub in 30 seconds."}
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
