@@ -250,3 +250,21 @@ export async function downloadFilesAsZip(
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
+
+/**
+ * 6. Rotate PDF pages in client memory
+ * angleDegrees: 90, 180, 270
+ */
+export async function rotatePdfPages(file: File, angleDegrees: number): Promise<Uint8Array> {
+  const arrayBuffer = await file.arrayBuffer();
+  const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+  const pages = pdfDoc.getPages();
+
+  for (const page of pages) {
+    const currentRotation = page.getRotation().angle;
+    const newAngle = (currentRotation + angleDegrees) % 360;
+    page.setRotation(degrees(newAngle));
+  }
+
+  return await pdfDoc.save();
+}

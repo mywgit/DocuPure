@@ -86,6 +86,16 @@ export function Header() {
             {t("navProtect")}
           </Link>
           <Link
+            href="/rotate-pdf"
+            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+              pathname === "/rotate-pdf"
+                ? "bg-red-500/20 text-red-300 border border-red-500/40"
+                : "text-slate-300 hover:text-white hover:bg-slate-900"
+            }`}
+          >
+            {t("navRotate")}
+          </Link>
+          <Link
             href="/ilovepdf-alternative"
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
               pathname.includes("alternative")

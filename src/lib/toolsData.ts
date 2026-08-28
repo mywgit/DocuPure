@@ -484,6 +484,104 @@ export const PDF_TOOLS: ToolItem[] = [
         ]
       }
     }
+  },
+  {
+    id: "rotate-pdf",
+    name: "Rotate PDF",
+    path: "/rotate-pdf",
+    shortDesc: "Rotate PDF pages 90, 180, or 270 degrees clockwise or counterclockwise in your browser permanently.",
+    primaryKeyword: "Rotate PDF",
+    secondaryKeywords: ["rotate pdf online free", "turn pdf pages", "fix upside down pdf", "rotate pdf permanently"],
+    metaTitle: "Rotate PDF Online Free (2026) - Rotate PDF Pages 90° 180° In-Browser",
+    metaDescription: "Permanently rotate PDF pages clockwise or counterclockwise. Fix upside-down scans and landscape layouts 100% in your browser without uploading.",
+    h1: "Rotate PDF Pages Online (100% In-Browser Privacy)",
+    iconName: "RotateCw",
+    badge: "Orientation",
+    popular: true,
+    howToSteps: [
+      "Upload the PDF document with misoriented or upside-down pages.",
+      "Choose to rotate 90° Right (Clockwise), 180°, or 90° Left (Counterclockwise).",
+      "Click 'Rotate & Download' to save the corrected PDF file permanently."
+    ],
+    features: [
+      "Permanent orientation adjustment directly modifying PDF page rotation metadata.",
+      "100% in-browser WebAssembly processing with zero server uploads.",
+      "Instant sub-second processing for multi-page contracts and scanned files."
+    ],
+    faqs: [
+      {
+        question: "Is the rotation permanent when opening in Adobe or Chrome?",
+        answer: "Yes! DocuPure writes standard PDF /Rotate attributes into the document tree so every PDF reader displays the corrected orientation permanently."
+      },
+      {
+        question: "Does rotating degrade document or scan quality?",
+        answer: "Not at all! Page rotation in DocuPure is a lossless metadata operation that doesn't re-compress images or alter vector text quality."
+      }
+    ],
+    locales: {
+      en: {
+        name: "Rotate PDF",
+        shortDesc: "Rotate PDF pages 90, 180, or 270 degrees clockwise or counterclockwise in your browser permanently.",
+        badge: "Orientation",
+        h1: "Rotate PDF Pages Online (100% In-Browser Privacy)",
+      },
+      es: {
+        name: "Girar PDF",
+        shortDesc: "Gira las páginas de tu PDF 90, 180 o 270 grados en el navegador de forma permanente.",
+        badge: "Orientación",
+        h1: "Girar Páginas PDF Online",
+      },
+      pt: {
+        name: "Girar PDF",
+        shortDesc: "Gire páginas do seu PDF em 90°, 180° ou 270° diretamente no navegador.",
+        badge: "Orientação",
+        h1: "Girar Arquivos PDF Online",
+      },
+      de: {
+        name: "PDF Drehen",
+        shortDesc: "Drehen Sie PDF-Seiten um 90, 180 oder 270 Grad dauerhaft direkt im Browser.",
+        badge: "Ausrichtung",
+        h1: "PDF-Seiten Online Drehen",
+      },
+      fr: {
+        name: "Faire Pivoter PDF",
+        shortDesc: "Faites pivoter vos pages PDF de 90, 180 ou 270 degrés directement dans votre navigateur.",
+        badge: "Orientation",
+        h1: "Faire Pivoter un PDF en Ligne",
+      },
+      ja: {
+        name: "PDF 回転",
+        shortDesc: "PDFのページを右・左に90度/180度回転して永久保存。逆さまのスキャン文書も瞬時に修正。",
+        badge: "向き補正",
+        h1: "PDF ページ回転・向き修正オンラインツール",
+      },
+      zh: {
+        name: "PDF 旋转与纠偏工具",
+        shortDesc: "一键将 PDF 顺时针/逆时针旋转 90度、180度或 270度，永久纠正倒置或横向排版的扫描件。",
+        badge: "页面纠偏",
+        h1: "在线 PDF 批量旋转纠偏（纯前端永久保存方向）",
+        howToSteps: [
+          "上传方向颠倒或需横纵向调整的 PDF 文件。",
+          "选择顺时针旋转 90°、逆时针旋转 90° 或颠倒 180°。",
+          "点击立即旋转并下载，方向纠偏将永久生效并写入 PDF 标准属性中。"
+        ],
+        features: [
+          "物理写入 PDF 标准 /Rotate 页面属性，在任何阅读器和打印机中永久生效。",
+          "纯无损无缝旋转：不破坏任何文字矢量结构与高清扫描分辨率。",
+          "100% 浏览器沙盒内存运行，0 字节上传云端。"
+        ],
+        faqs: [
+          {
+            question: "旋转后的 PDF 在其他电脑或手机上看也是正的吗？",
+            answer: "是的！DocuPure 将旋转角度直接固化在 PDF 的全局页面描述字典中，在微信、浏览器、Adobe Acrobat、手机等任何终端打开都会保持纠正后的正确方向。"
+          },
+          {
+            question: "旋转会降低文档清晰度吗？",
+            answer: "完全不会！这属于无损坐标系旋转操作，不经过有损重编码，100% 保持原本的高清画质。"
+          }
+        ]
+      }
+    }
   }
 ];
 

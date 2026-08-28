@@ -20,6 +20,7 @@ import {
   CheckCircle,
   ExternalLink,
   Calculator,
+  RotateCw,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -37,6 +38,8 @@ export default function HomePage() {
         return <Minimize2 className="w-6 h-6 text-emerald-400" />;
       case "Shield":
         return <Shield className="w-6 h-6 text-indigo-400" />;
+      case "RotateCw":
+        return <RotateCw className="w-6 h-6 text-cyan-400" />;
       default:
         return <Files className="w-6 h-6 text-red-400" />;
     }
