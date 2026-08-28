@@ -12,8 +12,36 @@ export function AlternativeLayout({ page }: { page: AlternativePage }) {
 
   const loc = getLocalizedAlternative(page, lang);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "name": loc.metaTitle,
+        "description": loc.metaDescription,
+        "url": `https://pdf.puretoolhub.com${page.path}`,
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": loc.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
+      },
+    ],
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-14">
+      {/* Schema.org Script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold">
