@@ -52,6 +52,13 @@ export const metadata: Metadata = {
     description: "100% Client-Side PDF Tools. Unlimited & Free with 0 Server Uploads.",
     creator: "@puretoolhub",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
