@@ -213,7 +213,7 @@ export default function HomePage() {
             <ExternalLink className="w-3 h-3 opacity-60" />
           </a>
           <a
-            href="https://tool.lehuoliaoyu.com"
+            href="https://tool.puretoolhub.com"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 bg-blue-600/90 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5"

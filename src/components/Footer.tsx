@@ -108,7 +108,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://tool.lehuoliaoyu.com"
+                  href="https://tool.puretoolhub.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between hover:text-blue-400 transition-colors group"

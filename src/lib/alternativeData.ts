@@ -41,11 +41,11 @@ export const ALTERNATIVE_PAGES: AlternativePage[] = [
     path: "/ilovepdf-alternative",
     locales: {
       en: {
-        metaTitle: "Best Free iLovePDF Alternative (2026) - 100% In-Browser Privacy & No Limits",
-        metaDescription: "Looking for an iLovePDF alternative without daily limits or server uploads? DocuPure offers unlimited in-browser PDF merging, splitting, and converting with 100% privacy.",
-        heroBadge: "Zero Server Uploads vs iLovePDF",
-        heroTitle: "The Privacy-First, Unlimited Free Alternative to iLovePDF",
-        heroSubtitle: "Tired of hitting iLovePDF daily free limits and uploading confidential contracts to third-party servers? DocuPure processes all PDF files 100% locally in your browser memory for free.",
+        metaTitle: "Better than iLovePDF (2026) - Free Alternative with No Uploads & No Limits | DocuPure",
+        metaDescription: "Looking for a tool better than iLovePDF? DocuPure is the best free alternative to iLovePDF in 2026: 100% in-browser privacy, zero server uploads, no daily task caps, and instant speed.",
+        heroBadge: "Better than iLovePDF: 100% Client-Side Privacy",
+        heroTitle: "Why DocuPure is Better than iLovePDF for Private PDF Processing",
+        heroSubtitle: "Tired of hitting daily task limits and uploading confidential legal documents to remote servers? Discover why DocuPure is the best free alternative to iLovePDF with zero cloud uploads.",
         comparisonTable: [
           {
             feature: "File Processing Location",

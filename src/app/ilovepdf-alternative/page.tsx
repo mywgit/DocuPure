@@ -8,6 +8,16 @@ const pageData = getAlternativePageBySlug("ilovepdf-alternative")!;
 export const metadata: Metadata = {
   title: pageData.locales.en.metaTitle,
   description: pageData.locales.en.metaDescription,
+  keywords: [
+    "better than ilovepdf",
+    "free alternative to ilovepdf",
+    "ilovepdf alternative",
+    "open pdf studio",
+    "private pdf tools",
+    "offline pdf editor",
+    "client-side pdf converter",
+    "no file size limit pdf",
+  ],
   alternates: {
     canonical: `https://pdf.puretoolhub.com${pageData.path}`,
   },
