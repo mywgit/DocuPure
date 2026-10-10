@@ -25,17 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: "PureToolHub Team", url: "https://puretoolhub.com" }],
   creator: "PureToolHub",
   alternates: {
-    canonical: "https://pdf.puretoolhub.com",
-    languages: {
-      "en-US": "https://pdf.puretoolhub.com",
-      "es-ES": "https://pdf.puretoolhub.com",
-      "pt-BR": "https://pdf.puretoolhub.com",
-      "de-DE": "https://pdf.puretoolhub.com",
-      "fr-FR": "https://pdf.puretoolhub.com",
-      "ja-JP": "https://pdf.puretoolhub.com",
-      "zh-CN": "https://pdf.puretoolhub.com",
-      "x-default": "https://pdf.puretoolhub.com",
-    },
+    canonical: "/",
   },
   openGraph: {
     title: "DocuPure - 100% In-Browser Privacy-First PDF Studio",
